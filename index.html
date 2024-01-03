@@ -147,7 +147,7 @@
 
         this.ammo += darts;
 
-        if (this.ammo >= this.capacity) {
+        if (this.ammo > this.capacity) {
           this.ammo = this.capacity;
         }
 
@@ -161,22 +161,41 @@
     }
 
     // 👉 CHALLENGE 3 EBook
+    // 🧠 Constructor takes two arguments:
+    //      * First arg is a string with the whole text of the book
+    //      * Second arg is the number of characters contained in a single page of the book
+    // 🧠 Instances have a `next` method:
+    //      * It takes no args and returns the next page of the book
+    //      * If the next page is empty because we have reached the end, return null instead
+    // 🧠 Example of usage:
+    //    const ebook = new EBook('abcdefg', 3)
+    //    ebook.next() // returns "abc"
+    //    ebook.next() // returns "def"
+    //    ebook.next() // returns "g"
+    //    ebook.next() // returns null
+    // 🌟 HINT: remember about the `slice` method which strings and arrays have
+    // ❗ Feel free to implement `back`, although this is not required nor graded
     class EBook {
-      // 🧠 Constructor takes two arguments:
-      //      * First arg is a string with the whole text of the book
-      //      * Second arg is the number of characters contained in a single page of the book
-      // 🧠 Instances have a `next` method:
-      //      * It takes no args and returns the next page of the book
-      //      * If the next page is empty because we have reached the end, return null instead
-      // 🧠 Example of usage:
-      //    const ebook = new EBook('abcdefg', 3)
-      //    ebook.next() // returns "abc"
-      //    ebook.next() // returns "def"
-      //    ebook.next() // returns "g"
-      //    ebook.next() // returns null
-      // 🌟 HINT: remember about the `slice` method which strings and arrays have
-      // ❗ Feel free to implement `back`, although this is not required nor graded
 
+      constructor(text, pageLength) {
+        this.text = text;
+        this.pageLength = pageLength;
+        this.pageIndex = 0;
+      }
+
+      next() {
+        let page = 
+          this.text.slice(this.pageIndex, this.pageIndex + this.pageLength);
+        this.pageIndex += this.pageLength;
+        return page ? page : null;
+      }
+
+      back() {
+        let page =
+          this.text.slice(this.pageIndex - this.pageLength, this.pageIndex);
+        this.pageIndex -= this.pageLength;
+        return page ? page : null;
+      }
     }
 
     // 👉 CHALLENGE 4 AntFarm
