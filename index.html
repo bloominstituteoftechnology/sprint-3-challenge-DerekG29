@@ -45,20 +45,68 @@
     // ❗ Debug properly using the Console
 
     // 👉 CHALLENGE 1 - Integers
+    // 🧠 Constructor takes **any** number of arguments, which are integers
+    // 🧠 Instances have an `ints` property which is an array holding the integers above in the same order
+    // 🧠 Implement a `getAll` method which returns the data held in the `ints` property
+    // 🧠 Implement a `getEvens` method which returns an array with the integers that are even
+    // 🧠 Implement a `getNegatives` method which returns an array with the integers that negative
+    // 🧠 Implement a `getAllSquared` method which returns an array with the integers squared
+    // 🧠 Implement a `pop` method which removes the last integer from `ints`  and returns it
+    // 🧠 Implement a `push` method which takes an int and pushes it to the end of `ints`, and returns the updated `ints` property
+    // 🧠 Implement a `getEveryNth` method which takes an int `n` and returns an array with the ints at position 0, n, n + n, n + n + n, etc
+    // 🧠 Implement a `getAllReversed` method which returns the ints in reverse order
+    // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
+    // ❗ WARNING: note that none of the methods actually mutate the `ints` property
     class Integers {
-      // 🧠 Constructor takes **any** number of arguments, which are integers
-      // 🧠 Instances have an `ints` property which is an array holding the integers above in the same order
-      // 🧠 Implement a `getAll` method which returns the data held in the `ints` property
-      // 🧠 Implement a `getEvens` method which returns an array with the integers that are even
-      // 🧠 Implement a `getNegatives` method which returns an array with the integers that negative
-      // 🧠 Implement a `getAllSquared` method which returns an array with the integers squared
-      // 🧠 Implement a `pop` method which removes the last integer from `ints`  and returns it
-      // 🧠 Implement a `push` method which takes an int and pushes it to the end of `ints`, and returns the updated `ints` property
-      // 🧠 Implement a `getEveryNth` method which takes an int `n` and returns an array with the ints at position 0, n, n + n, n + n + n, etc
-      // 🧠 Implement a `getAllReversed` method which returns the ints in reverse order
-      // ❗ WARNING: except for `getAllReversed`, methods must respect the order of the integers
-      // ❗ WARNING: note that none of the methods actually mutate the `ints` property
 
+      constructor(...args) {
+        this.ints = [...args];
+      }
+
+      getAll() {
+        return this.ints;
+      }
+
+      getEvens() {
+        const evens = this.ints.filter(int => int % 2 === 0);
+        return evens;
+      }
+
+      getNegatives() {
+        const negatives = this.ints.filter(int => int < 0);
+        return negatives;
+      }
+
+      getAllSquared() {
+        const squared = this.ints.map(int => int ** 2);
+        return squared;
+      }
+
+      pop() {
+        const popped = this.ints.pop();
+        return popped;
+      }
+
+      push(int) {
+        this.ints.push(int);
+        return this.ints;
+      }
+
+      getEveryNth(n) {
+        const everyNth = [];
+        for (let i = 0; i < this.ints.length; i += n) {
+          everyNth.push(this.ints[i]);
+        }
+        return everyNth;
+      }
+
+      getAllReversed() {
+        const reversed = [];
+        for (let i = this.ints.length - 1; i >= 0; i--) {
+          reversed.push(this.ints[i]);
+        }
+        return reversed;
+      }
     }
 
     // 👉 CHALLENGE 2 NerfGun
