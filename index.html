@@ -233,7 +233,6 @@
 
         constructor(...names) {
           this.ants = names.map(ant => { return { name: ant, health: 100 } });
-          
         }
 
         work() {
@@ -242,17 +241,19 @@
           this.ants.forEach(ant => ant.health -= 20);
           this.ants = this.ants.filter(ant => ant.health > 0);
 
-          return remainingAnts ? `${remainingAnts} ants starting work!` : 'No ants here. Did you work them to death?'
+          return remainingAnts ? `${remainingAnts} ants starting work!` : 'No ants here. Did you work them to death?';
         }
 
         feed(name) {
           let fed = false;
+
           this.ants.forEach(ant => {
             if (ant.name === name) {
               ant.health += 15;
               fed = true;
             }
           });
+
           return fed ? 'Yum!' : `${name} not found!`;
         }
       }
